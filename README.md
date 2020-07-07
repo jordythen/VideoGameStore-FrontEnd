@@ -1,0 +1,2 @@
+# VideoGameStore-FrontEnd
+frontend angular
