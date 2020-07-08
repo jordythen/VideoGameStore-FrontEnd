@@ -1,0 +1,20 @@
+.mainGrid {
+    display: grid;
+    grid-template-columns: 4fr 1.5fr;
+}
+
+.homeTemplate {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 936px;
+    background: rgb(93, 238, 255);
+    background: linear-gradient(28deg, rgba(90, 235, 252, 1) 0%, rgba(171, 252, 193, 1) 100%);
+}
+
+.motto {
+    font-family: 'Play', sans-serif;
+    font-size: 14pt;
+    color: rgb(255, 255, 255);
+    margin-bottom: 420px;
+}
