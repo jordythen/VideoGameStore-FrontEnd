@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 43px !important;
+}
+
+.mat-toolbar.mat-primary {
+  background: rgb(156, 170, 255);
+  background: linear-gradient(90deg, rgba(156, 170, 255, 1) 14%, rgba(46, 208, 255, 1) 48%, rgb(255, 153, 233) 94%);
+  box-shadow: 2px 1px 3px #8d8cbf;
+}
+
+
+#mainLogo {
+  display: inline-grid;
+  justify-self: center;
+  align-content: center;
+  align-self: center;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+}
+
+#mainLogo:hover {
+  transform: scaleX(1.5) scaleY(1.5);
+}
+
+
+.noOutline:focus {
+  outline: 0 !important;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+}
+
+.hidden {
+  display: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.topNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.headerTitle {
+  justify-self: start;
+  font-family: 'Play', sans-serif;
+  font-size: larger;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.leftIcon {
+  transition: all 0.5s ease-out;
+}
+
+.topNavLinks {
+  justify-self: end;
+  margin-right: 10px;
+}
+
+.topNavLinks>a {
+  font-family: 'Play', sans-serif;
+  font-size: 12pt;
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+}
+
+.mat-menu-panel {
+  margin-top: 40px !important;
+  background-color: #ffaaed;
+}
+
+button.mat-menu-item {
+  color: white !important;
+}
