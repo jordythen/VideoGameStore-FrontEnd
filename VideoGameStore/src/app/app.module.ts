@@ -18,6 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
+import { UrlService } from './services/url.service';
 
 @NgModule({
   declarations: [
@@ -41,8 +44,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,
     MatMenuModule,
     NgbModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [UserService, UrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
