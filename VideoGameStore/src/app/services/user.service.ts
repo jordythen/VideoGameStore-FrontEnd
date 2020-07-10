@@ -16,7 +16,6 @@ export class UserService {
   constructor(private http: HttpClient, private urlService: UrlService) { }
 
   loginUser(username: string, password: string): Observable<HttpResponse<User>> {
-    alert("username: " + username + " password: " + password);
     if (username && password){ // if function was called with username and password
       const body = `user=${username}&pass=${password}`;
       // tslint:disable-next-line: max-line-length

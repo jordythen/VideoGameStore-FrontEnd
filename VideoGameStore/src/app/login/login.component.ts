@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    alert("THIS username: " + this.username + " password: " + this.password);
-
     this.userService.loginUser(this.username, this.password).subscribe(
       resp => {
         this.loggedUser = resp.body;

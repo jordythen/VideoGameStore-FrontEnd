@@ -1,9 +1,11 @@
-<section class="mainGrid">
+<section id="mainGrid" class="mainGrid">
     <div class="homeTemplate">  
         <div class="motto">
             Made by indie developers<br>
             For indie developers
         </div>
     </div>
-    <div><app-login></app-login></div> 
+    <div *ngIf="!loggedUser">
+        <app-login></app-login>
+    </div> 
 </section>
