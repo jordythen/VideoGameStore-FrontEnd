@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,14 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   statusCode: number;
+  registerFlag: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private homeComp: HomeComponent) { }
 
   ngOnInit(): void {
     this.username = '';
     this.password = '';
-
+    this.registerFlag = this.homeComp.registerFlag;
   }
 
   login() {
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  toRegister() {
+    this.registerFlag = true;
+    this.homeComp.registerFlag = true;
   }
 
 }

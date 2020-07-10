@@ -6,6 +6,7 @@
         </div>
     </div>
     <div *ngIf="!loggedUser">
-        <app-login></app-login>
+        <app-login *ngIf="!registerFlag"></app-login>
+        <app-register *ngIf="registerFlag"></app-register>
     </div> 
 </section>
