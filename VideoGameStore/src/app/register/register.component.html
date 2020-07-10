@@ -1,1 +1,36 @@
-<p>register works!</p>
+<div class="register-container">
+  <h2 class="register-title">Register</h2>
+  <form onsubmit="return false;">
+    <div class="form-group">
+      <label for="firstNameInput">First Name</label>
+      <input type="text" class="form-control" name="firstNameInput" [(ngModel)]="firstName" (keyup)="checkButtonLogin()">
+    </div>
+    <div class="form-group">
+      <label for="lastNameInput">Last Name</label>
+      <input type="text" class="form-control" name="lastNameInput"[(ngModel)]="lastName" (keyup)="checkButtonLogin()">
+    </div>
+    <div class="form-group">
+      <label for="usernameInput">Username</label>
+      <input type="text" class="form-control" name="usernameInput"[(ngModel)]="username" (keyup)="checkButtonLogin()">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input [type]="passInputType" class="form-control" name="passwordInput"[(ngModel)]="password" (keyup)="checkButtonLogin()">
+    </div>
+    <div class="form-group">
+      <label for="confirmPasswordInput">Confirm Password</label>
+      <input [type]="passInputType" class="form-control" name="confirmPasswordInput"[(ngModel)]="confirmPass" (keyup)="checkButtonLogin()">
+    </div>
+    <div class="form-group">
+      <input type="checkbox" class="password-check" id="passwordViewCheck" name="passwordViewCheck" (change)="togglePassView()">
+      <label class="form-check-label" for="passwordViewCheck">Show Password</label>
+  </div>
+    <button type="submit" class="btn btn-success" (click)="register()" [disabled]="!formStatus" >Submit</button>
+  </form>
+  <div class="d-flex justify-content-center links">
+      Have an account? Go back to <a [routerLink]="" (click)="toLogin()"><span class="register-link">Login</span></a>
+    </div>
+    <div class="d-flex justify-content-center">
+      <a href="#">Forgot your password?</a>
+  </div>
+</div>

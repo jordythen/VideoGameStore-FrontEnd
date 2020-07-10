@@ -31,17 +31,12 @@ export class MainNavComponent implements OnInit, OnChanges {
     // Checking to see if user is already logged in or not.
     this.userService.loginUser(null, null).subscribe(
       resp => {
-        console.log(resp);
-        console.log(resp.body);
-        console.log(resp.status);
         this.loggedUser = resp.body;
         this.statusCode = resp.status;
         if (this.loggedUser) {
           console.log('User is logged in!');
           console.log('This is the status code received: ' + this.statusCode);
           this.account = `${this.loggedUser.firstName} ${this.loggedUser.lastName}`;
-        } else if (!this.loggedUser) {
-          console.log('User is NOT logged in.');
         }
       }
     );

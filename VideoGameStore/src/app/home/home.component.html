@@ -1,4 +1,4 @@
-<section id="mainGrid" class="mainGrid">
+<section id="mainGrid" [style.grid-template-columns]="gridTemplate">
     <div class="homeTemplate">  
         <div class="motto">
             Made by indie developers<br>
@@ -6,6 +6,7 @@
         </div>
     </div>
     <div *ngIf="!loggedUser">
-        <app-login></app-login>
+        <app-login *ngIf="!registerFlag"></app-login>
+        <app-register *ngIf="registerFlag"></app-register>
     </div> 
 </section>
