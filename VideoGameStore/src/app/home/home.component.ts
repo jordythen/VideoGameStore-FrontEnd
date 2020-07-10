@@ -14,19 +14,18 @@ export class HomeComponent implements OnInit {
 
   loggedUser: User;
   statusCode: number;
+  gridTemplate = '4fr 1.5fr';
 
   ngOnInit(): void {
-    this.userService.loginUser(null, null).subscribe(
+    this.userService.checkLoggedUser().subscribe(
       resp => {
-        console.log(resp);
-        console.log(resp.body);
-        console.log(resp.status);
         this.loggedUser = resp.body;
         this.statusCode = resp.status;
         if (this.loggedUser) {
           console.log('User is logged in!');
           console.log('This is the status code received: ' + this.statusCode);
-          document.getElementById('mainGrid').style.gridTemplateColumns = "1fr";
+          // document.getElementById('mainGrid').style.gridTemplateColumns = "1fr";
+          this.gridTemplate = '1fr';
         } else if (!this.loggedUser) {
           console.log('User is NOT logged in.');
         }

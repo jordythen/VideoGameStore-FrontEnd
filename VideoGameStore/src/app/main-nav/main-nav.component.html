@@ -13,12 +13,11 @@
           <div class="topNavLinks">
             <!-- !(isHandset|async) && loggedUser put this when user is logged in -->
             <!-- !(isHandset|async) && !loggedUser put this when user is NOT logged in -->
-            <a *ngIf="!(isHandset$ | async) && loggedUser" class="noOutline" mat-button routerLink="/vendingmachine"> Vending Machine </a>
+            <a *ngIf="!(isHandset$ | async) && loggedUser" class="noOutline" mat-button routerLink="/vendingmachine"> Inventory </a>
             <button *ngIf="!(isHandset$ | async) && loggedUser" class="noOutline" mat-button [matMenuTriggerFor]="beforeMenu"
               >Account</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <button mat-menu-item routerLink="/account">{{account}}</button>
-              <button mat-menu-item routerLink="/myvendingmachine">My Vending Machine</button>
               <button mat-menu-item (click)="logout()">Log out</button>
             </mat-menu>
           </div>
@@ -34,7 +33,6 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
       <mat-toolbar color="primary">Menu</mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item routerLink="/vendingmachine">Vending Machine</a>
         <a mat-list-item routerLink="/login">Log In</a>
         <a mat-list-item routerLink="/register">Register</a>
         <a mat-list-item routerLink="/account">Account</a>

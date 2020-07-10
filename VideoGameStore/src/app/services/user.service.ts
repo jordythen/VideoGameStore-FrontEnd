@@ -32,4 +32,10 @@ export class UserService {
     return this.http.delete(this.urlService.getUrl() + 'account/login', {withCredentials: true}).pipe();
   }
 
+  checkLoggedUser(): Observable<HttpResponse<User>> {
+    return this.http.get(this.urlService.getUrl() + 'account/login', { observe: 'response', withCredentials: true }).pipe(
+      map(resp => resp as HttpResponse<User>)
+    );
+  }
+
 }
