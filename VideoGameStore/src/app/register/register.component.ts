@@ -53,11 +53,8 @@ export class RegisterComponent implements OnInit {
   }
 
   checkButtonLogin() {
-    if (this.firstName && this.lastName && this.username && this.password && this.confirmPass && (this.password === this.confirmPass)) {
-      this.formStatus = true;
-    } else {
-      this.formStatus = false;
-    }
+    // tslint:disable-next-line: max-line-length
+    (this.firstName && this.lastName && this.username && this.password && this.confirmPass && (this.password === this.confirmPass)) ? this.formStatus = true : this.formStatus = false;
   }
 
 }
