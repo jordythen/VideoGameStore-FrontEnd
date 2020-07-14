@@ -1,12 +1,20 @@
 <section id="mainGrid" [style.grid-template-columns]="gridTemplate">
     <div class="homeTemplate">  
+        <img src="https://i.imgur.com/NUmLpOm.png" [style.right]="bgImgStyle" class="bgImg">
         <div class="motto">
             Made by indie developers<br>
             For indie developers
         </div>
     </div>
-    <div *ngIf="!loggedUser">
-        <app-login *ngIf="!registerFlag"></app-login>
-        <app-register *ngIf="registerFlag"></app-register>
-    </div> 
+    
+    <!--
+    <div>
+        <app-accountquery></app-accountquery>
+    </div>-->
+    
+    <div *ngIf="!loggedUser || queryFlag">
+        <app-login *ngIf="!registerFlag && !queryFlag"></app-login>
+        <app-register *ngIf="registerFlag && !queryFlag"></app-register>
+        <app-accountquery *ngIf="queryFlag && registerFlag"></app-accountquery>
+    </div>
 </section>

@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
 
   loggedUser: User;
   registerFlag = false;
+  queryFlag = false;
   gridTemplate = '4fr 1.5fr';
+  bgImgStyle = '27%';
 
   ngOnInit(): void {
     this.userService.checkLoggedUser().subscribe(
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit {
         this.loggedUser = resp.body;
         if (this.loggedUser) {
           this.gridTemplate = '1fr';
+          this.bgImgStyle = '-1%';
         }
       }
     );

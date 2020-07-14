@@ -1,0 +1,30 @@
+.query-container {
+    /* height: 100vh; */
+    margin-top: 50%;
+}
+
+.query-title {
+    text-align: center;
+}
+
+.radio-label {
+    margin-left: 5px;
+}
+
+form {
+    margin: 40px;
+}
+
+.btnPlacement{
+    margin-top:40px;
+    display: grid;
+    justify-content: center;
+}
+
+.radioBtn{
+    text-align: center;
+}
+
+.no{
+    margin-left:20px;
+}

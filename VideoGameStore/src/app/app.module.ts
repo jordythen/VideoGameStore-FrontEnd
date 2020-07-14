@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
+import { AccountqueryComponent } from './accountquery/accountquery.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UrlService } from './services/url.service';
     MainNavComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountqueryComponent
   ],
   imports: [
     BrowserModule,
