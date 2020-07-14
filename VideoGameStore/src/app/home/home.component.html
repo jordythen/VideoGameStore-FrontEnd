@@ -6,8 +6,13 @@
             For indie developers
         </div>
     </div>
-    <div *ngIf="!loggedUser">
+    <div>
+        <app-accountquery></app-accountquery>
+    </div>
+    <!--
+    <div *ngIf="!loggedUser || queryFlag">
         <app-login *ngIf="!registerFlag"></app-login>
-        <app-register *ngIf="registerFlag"></app-register>
-    </div> 
+        <app-register *ngIf="registerFlag && !queryFlag"></app-register>
+        <app-accountquery *ngIf="queryFlag"></app-accountquery>
+    </div> -->
 </section>

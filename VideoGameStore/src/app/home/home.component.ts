@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   loggedUser: User;
   registerFlag = false;
+  queryFlag = false;
   gridTemplate = '4fr 1.5fr';
   bgImgStyle = '27%';
 

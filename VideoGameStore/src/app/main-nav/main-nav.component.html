@@ -13,7 +13,7 @@
           <div class="topNavLinks">
             <!-- !(isHandset|async) && loggedUser put this when user is logged in -->
             <!-- !(isHandset|async) && !loggedUser put this when user is NOT logged in -->
-            <a *ngIf="!(isHandset$ | async) && loggedUser" class="noOutline" mat-button routerLink="/vendingmachine"> Inventory </a>
+            <a *ngIf="!(isHandset$ | async)" class="noOutline" mat-button routerLink="/vendingmachine"> Inventory </a>
             <button *ngIf="!(isHandset$ | async) && loggedUser" class="noOutline" mat-button [matMenuTriggerFor]="beforeMenu"
               >Account</button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">

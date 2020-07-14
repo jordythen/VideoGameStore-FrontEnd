@@ -1,0 +1,23 @@
+<form>
+    <div class="query-container">
+        <h3 class="query-title">Are you a developer?</h3>
+        <div class="radioBtn">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input [(ngModel)]="devQueryVal" [checked]="devQueryVal=='1'" [value]="1" type="radio" id="yesID" name="devQuery" class="custom-control-input">
+                <label class="custom-control-label" for="yesID">Yes</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline no">
+                <input [(ngModel)]="devQueryVal" [checked]="devQueryVal=='2'" [value]="2" type="radio" id="noID" name="devQuery" class="custom-control-input">
+                <label class="custom-control-label" for="noID">No</label>
+            </div>
+        </div>
+
+        <div *ngIf="devQueryVal===1">
+            <h2> ask more stuff</h2>
+        </div>
+
+        <div class="btnPlacement">
+            <button type="submit" class="btn btn-success" (click)="devQuerySubmit()">Submit</button>
+        </div>
+    </div>
+</form>

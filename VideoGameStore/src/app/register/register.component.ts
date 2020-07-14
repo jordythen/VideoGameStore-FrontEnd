@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeComponent } from '../home/home.component';
 import { first } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
+import { User } from '../classes/user';
+import { LoginComponent } from '../login/login.component';
+import { MainNavComponent } from '../main-nav/main-nav.component';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +14,7 @@ import { first } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   registerFlag: boolean;
+  queryFlag: boolean;
   firstName: string;
   lastName: string;
   username: string;
@@ -18,8 +23,12 @@ export class RegisterComponent implements OnInit {
   formStatus: boolean;
   passwordView: boolean;
   passInputType: string;
+  tempUser: User;
+  loggedUser: User;
+  registerCode: number;
+  loginCode: number;
 
-  constructor(private homeComp: HomeComponent) { }
+  constructor(private homeComp: HomeComponent, private userService: UserService, private mainNavComp: MainNavComponent) { }
 
   ngOnInit(): void {
     this.firstName = '';
@@ -31,11 +40,30 @@ export class RegisterComponent implements OnInit {
     this.passInputType = 'password';
     this.formStatus = false;
     this.registerFlag = this.homeComp.registerFlag;
+    this.queryFlag = this.homeComp.queryFlag;
+    this.tempUser = new User();
   }
 
   register() {
+    this.userService.createAccount(this.firstName, this.lastName, this.username, this.confirmPass).subscribe(
+      resp => {
+        this.loggedUser = resp.body;
+        this.registerCode = resp.status;
+        if (this.registerCode === 200) {
+          this.queryFlag = true;
+          this.homeComp.queryFlag = true;
+          this.homeComp.loggedUser = this.loggedUser;
+          this.mainNavComp.loggedUser = this.loggedUser;
+          this.mainNavComp.account = `${this.loggedUser.firstName} ${this.loggedUser.lastName}`;
+
+        } else {
+          alert('Error occured during register');
+        }
+      }
+    );
 
   }
+
 
   toLogin() {
     this.registerFlag = false;
