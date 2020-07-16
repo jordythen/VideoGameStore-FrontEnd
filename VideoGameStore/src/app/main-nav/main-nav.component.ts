@@ -12,7 +12,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent implements OnInit, OnChanges {
+export class MainNavComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
               private userService: UserService) { }
@@ -31,6 +31,7 @@ export class MainNavComponent implements OnInit, OnChanges {
     // Checking to see if user is already logged in or not.
     this.userService.loginUser(null, null).subscribe(
       resp => {
+        // alert("From main nav: " + resp.body);
         this.loggedUser = resp.body;
         this.statusCode = resp.status;
         if (this.loggedUser) {
@@ -41,20 +42,7 @@ export class MainNavComponent implements OnInit, OnChanges {
       }
     );
   }
-
-  ngOnChanges() {
-    /* 
-    this.userService.loginUser(null, null).subscribe(
-      resp => {
-        this.loggedUser = resp.body;
-        if (this.loggedUser != null){
-          console.log('User is logged in!');
-        }else if (this.loggedUser == null){
-          console.log('User is NOT logged in.');
-        }
-      }
-    );*/
-  }
+  
   logout() {
     this.userService.logoutUser().subscribe(
       resp => {

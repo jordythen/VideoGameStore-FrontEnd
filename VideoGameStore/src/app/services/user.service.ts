@@ -40,9 +40,9 @@ export class UserService {
   }
 
   createAccount(firstName: string,
-    lastName: string,
-    username: string,
-    password: string): Observable<HttpResponse<User>> {
+                lastName: string,
+                username: string,
+                password: string): Observable<HttpResponse<User>> {
     if (firstName && lastName) {
       const body = `username=${username}&password=${password}&firstname=${firstName}&lastname=${lastName}`;
 
@@ -52,4 +52,11 @@ export class UserService {
     }
   }
 
+  registerDeveloper(userId: number, devName: string, description: string): Observable<HttpResponse<any>> {
+  const body = `userID=${userId}&name=${devName}&desc=${description}`;
+
+  return this.http.post(this.urlService.getUrl() + 'account/devReg', 
+    body, { headers: this.encHeaders, observe: 'response', withCredentials: true })
+    .pipe(map(resp => resp as HttpResponse<any>));
+  }
 }

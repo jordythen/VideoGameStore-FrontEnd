@@ -12,8 +12,15 @@
             </div>
         </div>
 
-        <div *ngIf="devQueryVal===1">
-            <h2> ask more stuff</h2>
+        <div *ngIf="devQueryVal===1" class="devQuery">
+            <div class="form-group">
+                <label>Developer Name</label>
+                <input type="text" class="form-control" name="devNameInput" [(ngModel)]="devName">
+              </div>
+              <div class="form-group">
+                <label>Give a brief description about your team</label>
+                <input type="text" class="form-control" name="devDescInput" [(ngModel)]="devDesc">
+              </div>
         </div>
 
         <div class="btnPlacement">
