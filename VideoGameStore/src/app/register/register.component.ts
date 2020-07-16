@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
 import { HomeComponent } from '../home/home.component';
 import { first } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { User } from '../classes/user';
 import { LoginComponent } from '../login/login.component';
 import { MainNavComponent } from '../main-nav/main-nav.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit{
 
+  constructor(private homeComp: HomeComponent, private userService: UserService, private mainNavComp: MainNavComponent) { }
+  
   registerFlag: boolean;
   queryFlag: boolean;
   firstName: string;
@@ -27,8 +30,7 @@ export class RegisterComponent implements OnInit {
   loggedUser: User;
   registerCode: number;
   loginCode: number;
-
-  constructor(private homeComp: HomeComponent, private userService: UserService, private mainNavComp: MainNavComponent) { }
+  public displayRegisterLoader: Observable<boolean> = this.userService.isLoading();
 
   ngOnInit(): void {
     this.firstName = '';
@@ -43,10 +45,11 @@ export class RegisterComponent implements OnInit {
     this.queryFlag = this.homeComp.queryFlag;
     this.tempUser = new User();
   }
-
+  
   register() {
     this.userService.createAccount(this.firstName, this.lastName, this.username, this.confirmPass).subscribe(
       resp => {
+        this.userService.loader.next(false);
         this.loggedUser = resp.body;
         this.registerCode = resp.status;
         if (this.registerCode === 200) {
