@@ -56,6 +56,15 @@ export class UserService {
     }
   }
 
+  checkIfUsernameExist(username: string): Observable<HttpResponse<number>>{
+    if (username){
+      const body = `username=${username}`;
+      return this.http.post(this.urlService.getUrl() + 'account/register/usernameVerification',
+      body, { headers: this.encHeaders, observe: 'response', withCredentials: true })
+      .pipe(map(resp => resp as HttpResponse<number>));
+    }
+  }
+
   public isLoading(): Observable<boolean> {
     return this.loader;
   }
@@ -63,7 +72,7 @@ export class UserService {
   registerDeveloper(userId: number, devName: string, description: string): Observable<HttpResponse<any>> {
   const body = `userID=${userId}&name=${devName}&desc=${description}`;
 
-  return this.http.post(this.urlService.getUrl() + 'account/devReg', 
+  return this.http.post(this.urlService.getUrl() + 'account/devReg',
     body, { headers: this.encHeaders, observe: 'response', withCredentials: true })
     .pipe(map(resp => resp as HttpResponse<any>));
   }

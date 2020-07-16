@@ -30,6 +30,9 @@ export class RegisterComponent implements OnInit{
   loggedUser: User;
   registerCode: number;
   loginCode: number;
+  usernameCode: number;
+  usernameTaken: boolean;
+  usernameTooShort: boolean;
   public displayRegisterLoader: Observable<boolean> = this.userService.isLoading();
 
   ngOnInit(): void {
@@ -44,6 +47,10 @@ export class RegisterComponent implements OnInit{
     this.registerFlag = this.homeComp.registerFlag;
     this.queryFlag = this.homeComp.queryFlag;
     this.tempUser = new User();
+    this.usernameCode = null;
+    this.usernameTaken = false;
+    this.usernameTooShort = false;
+    
   }
   
   register() {
@@ -84,10 +91,37 @@ export class RegisterComponent implements OnInit{
   }
 
   checkButtonLogin() {
-    if (this.firstName && this.lastName && this.username && this.password && this.confirmPass && (this.password === this.confirmPass)) {
+    if (this.firstName && this.lastName && this.username && this.password && this.confirmPass
+      && (this.usernameTaken === false)
+      && (this.usernameTooShort === false)
+      && (this.password === this.confirmPass)) {
       this.formStatus = true;
     } else {
       this.formStatus = false;
+    }
+  }
+
+  verifyUsername(){
+
+    if (this.username.length < 5){
+      this.usernameTooShort = true;
+    } else if (this.username.length >= 5 || this.username.length === 0){
+      this.usernameTooShort = false;
+    }
+
+    if (this.username){
+      this.userService.checkIfUsernameExist(this.username).subscribe(
+        resp => {
+          this.usernameCode = resp.status;
+          console.log(this.usernameCode);
+          if (this.usernameCode === 202){ // Username is valid
+            this.usernameTaken = false;
+          }else if (this.usernameCode === 208){ // Username already exists
+            this.usernameTaken = true;
+          }
+          this.checkButtonLogin();
+        }
+      );
     }
   }
 
