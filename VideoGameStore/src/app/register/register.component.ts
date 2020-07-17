@@ -125,6 +125,7 @@ export class RegisterComponent implements OnInit{
             this.usernameValid = true;
           } else if (this.usernameCode === 208) { // Username already exists
             this.usernameTaken = true;
+            this.usernameValid = false;
           }
           this.checkButtonLogin();
         }
