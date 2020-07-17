@@ -1,0 +1,7 @@
+.inventoryTemplate {
+    display: grid;
+    height: 100vh;
+    background: rgb(93, 238, 255);
+    /* background: linear-gradient(28deg, rgba(171, 252, 193, 1) 0%, rgba(90, 235, 252, 1) 100%); */
+    background: linear-gradient(28deg, rgba(90, 235, 252, 1) 0%, rgba(171, 252, 193, 1) 100%);
+}

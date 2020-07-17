@@ -13,6 +13,7 @@ export class UserService {
   public loader: Subject<boolean> = new BehaviorSubject<boolean>(false);
   private encHeaders = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
   private regHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  public loggedUser: User;
 
   constructor(private http: HttpClient, private urlService: UrlService) { }
 

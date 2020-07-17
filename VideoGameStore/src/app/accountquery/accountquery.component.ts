@@ -32,7 +32,7 @@ export class AccountqueryComponent implements OnInit {
           this.responseStatus = resp.status;
           if (this.responseStatus === 200){
             this.homeComp.queryFlag = false;
-            this.homeComp.changeHomeGrid();
+            this.homeComp.loggedInGrid();
           }else{
             alert("WRONG");
           }
@@ -41,7 +41,7 @@ export class AccountqueryComponent implements OnInit {
     }
     else if (this.devQueryVal === 2){
       this.homeComp.queryFlag = false;
-      this.homeComp.changeHomeGrid();
+      this.homeComp.loggedInGrid();
     }
 
   }

@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.userService.loader.next(false);
           this.mainNavComp.loggedUser = this.loggedUser;
           this.mainNavComp.account = `${this.loggedUser.firstName} ${this.loggedUser.lastName}`;
-          this.homeComp.changeHomeGrid();
+          this.homeComp.loggedInGrid();
           this.homeComp.loggedUser = this.loggedUser;
         }
       }
