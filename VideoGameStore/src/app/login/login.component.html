@@ -1,13 +1,26 @@
 <div class="login-container"  *ngIf="!(displayLoginLoader | async)">
   <h2 class="login-title">Login</h2>
   <form onsubmit="return false;">
+    <div class="alert alert-danger wrong-login alert-dismissible fade show" role="alert" *ngIf="invalidLogin" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      Invalid Username or Password
+    </div>
     <div class="form-group">
       <label for="usernameInput">Username</label>
-      <input type="text" class="form-control" name="usernameInput" [(ngModel)]="username">
+      <input type="text" class="form-control" [class.is-invalid]="invalidLogin" name="usernameInput" [(ngModel)]="username">
     </div>
     <div class="form-group">
       <label for="passwordInput">Password</label>
-      <input type="password" class="form-control" name="passwordInput"[(ngModel)]="password">
+      <input [type]="passInputType" class="form-control" [class.is-invalid]="invalidLogin" name="passwordInput"[(ngModel)]="password">
+      <div class="invalid-feedback" *ngIf="invalidLogin">
+        Invalid Username or Password
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="checkbox" class="password-check" id="passwordViewCheck" name="passwordViewCheck" (change)="togglePassView()">
+      <label class="form-check-label" for="passwordViewCheck">Show Password</label>
     </div>
     <button type="submit" class="btn btn-success" (click)="login()">Submit</button>
   </form>

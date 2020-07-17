@@ -6,16 +6,9 @@
             For indie developers
         </div>
     </div>
-    
-    <!--
-    <div>
-        <app-accountquery></app-accountquery>
-    </div>-->
-    <div *ngIf="isInitial">
-        <div *ngIf="!loggedUser || queryFlag" >
-            <app-login *ngIf="!registerFlag && !queryFlag"></app-login>
-            <app-register *ngIf="registerFlag && !queryFlag"></app-register>
-            <app-accountquery *ngIf="queryFlag && registerFlag"></app-accountquery>
-        </div>
+    <div *ngIf="!loggedUser || queryFlag" >
+        <app-login *ngIf="!registerFlag && !queryFlag"></app-login>
+        <app-register *ngIf="registerFlag && !queryFlag"></app-register>
+        <app-accountquery *ngIf="queryFlag && registerFlag"></app-accountquery>
     </div>
 </section>

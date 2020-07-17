@@ -16,3 +16,9 @@ form {
   margin-top: 40%;
   text-align: center;
 }
+.wrong-login {
+  text-align: center !important;
+}
+.form-check-label {
+  margin-left: 5px;
+}
