@@ -11,12 +11,15 @@
     </div>
     <div class="form-group">
       <label for="usernameInput">Username</label>
-      <input type="text" class="form-control" [class.is-invalid]="usernameTaken || usernameTooShort"  name="usernameInput"[(ngModel)]="username" (keyup)="checkButtonLogin(); verifyUsername();">
+      <input type="text" class="form-control" [class.is-invalid]="usernameTaken || usernameTooShort" [class.is-valid]="usernameValid"  name="usernameInput"[(ngModel)]="username" (keyup)="checkButtonLogin();" (blur)="verifyUsername();">
       <div class="invalid-feedback" *ngIf="usernameTaken">
         Username is already taken.
       </div>
+      <div class="valid-feedback" *ngIf="usernameValid">
+        Username available!
+      </div>
       <div class="invalid-feedback" *ngIf="usernameTooShort">
-        Username have to be longer than 5 characters.
+        Username must be atleast 5 characters long.
       </div>
     </div>
     <div class="form-group">
