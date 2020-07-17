@@ -1,4 +1,4 @@
-<div class="register-container">
+<div class="register-container"  *ngIf="!(displayRegisterLoader | async)">
   <h2 class="register-title">Register</h2>
   <form onsubmit="return false;">
     <div class="form-group">
@@ -11,7 +11,13 @@
     </div>
     <div class="form-group">
       <label for="usernameInput">Username</label>
-      <input type="text" class="form-control" name="usernameInput"[(ngModel)]="username" (keyup)="checkButtonLogin()">
+      <input type="text" class="form-control" [class.is-invalid]="usernameTaken || usernameTooShort"  name="usernameInput"[(ngModel)]="username" (keyup)="checkButtonLogin(); verifyUsername();">
+      <div class="invalid-feedback" *ngIf="usernameTaken">
+        Username is already taken.
+      </div>
+      <div class="invalid-feedback" *ngIf="usernameTooShort">
+        Username have to be longer than 5 characters.
+      </div>
     </div>
     <div class="form-group">
       <label for="passwordInput">Password</label>
@@ -33,4 +39,9 @@
     <div class="d-flex justify-content-center">
       <a href="#">Forgot your password?</a>
   </div>
+</div>
+<div class="regLoader" *ngIf="displayRegisterLoader | async">
+  <div class="loadingio-spinner-blocks-qn75jsvav1"><div class="ldio-eqmkdf70m6i">
+    <div style='left:52.75px;top:52.75px;animation-delay:0s'></div><div style='left:88.61999999999999px;top:52.75px;animation-delay:0.125s'></div><div style='left:124.49px;top:52.75px;animation-delay:0.25s'></div><div style='left:52.75px;top:88.61999999999999px;animation-delay:0.875s'></div><div style='left:124.49px;top:88.61999999999999px;animation-delay:0.375s'></div><div style='left:52.75px;top:124.49px;animation-delay:0.75s'></div><div style='left:88.61999999999999px;top:124.49px;animation-delay:0.625s'></div><div style='left:124.49px;top:124.49px;animation-delay:0.5s'></div>
+    </div></div>
 </div>

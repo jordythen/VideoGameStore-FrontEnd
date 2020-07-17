@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { MainNavComponent } from '../main-nav/main-nav.component';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private mainNav: MainNavComponent, private userService: UserService) { }
+  constructor(private ref: ApplicationRef, private mainNav: MainNavComponent, private userService: UserService) { }
 
   loggedUser: User;
   registerFlag = false;
@@ -22,11 +22,15 @@ export class HomeComponent implements OnInit {
       resp => {
         this.loggedUser = resp.body;
         if (this.loggedUser) {
-          this.gridTemplate = '1fr';
-          this.bgImgStyle = '-1%';
+          this.changeHomeGrid();
         }
       }
     );
+  }
+
+  changeHomeGrid(){
+    this.gridTemplate = '1fr';
+    this.bgImgStyle = '-1%';
   }
 
 }

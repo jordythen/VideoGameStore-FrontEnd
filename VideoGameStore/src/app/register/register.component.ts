@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
 import { HomeComponent } from '../home/home.component';
 import { first } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { User } from '../classes/user';
 import { LoginComponent } from '../login/login.component';
 import { MainNavComponent } from '../main-nav/main-nav.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit{
 
+  constructor(private homeComp: HomeComponent, private userService: UserService, private mainNavComp: MainNavComponent) { }
+  
   registerFlag: boolean;
   queryFlag: boolean;
   firstName: string;
@@ -27,8 +30,10 @@ export class RegisterComponent implements OnInit {
   loggedUser: User;
   registerCode: number;
   loginCode: number;
-
-  constructor(private homeComp: HomeComponent, private userService: UserService, private mainNavComp: MainNavComponent) { }
+  usernameCode: number;
+  usernameTaken: boolean;
+  usernameTooShort: boolean;
+  public displayRegisterLoader: Observable<boolean> = this.userService.isLoading();
 
   ngOnInit(): void {
     this.firstName = '';
@@ -42,11 +47,16 @@ export class RegisterComponent implements OnInit {
     this.registerFlag = this.homeComp.registerFlag;
     this.queryFlag = this.homeComp.queryFlag;
     this.tempUser = new User();
+    this.usernameCode = null;
+    this.usernameTaken = false;
+    this.usernameTooShort = false;
+    
   }
-
+  
   register() {
     this.userService.createAccount(this.firstName, this.lastName, this.username, this.confirmPass).subscribe(
       resp => {
+        this.userService.loader.next(false);
         this.loggedUser = resp.body;
         this.registerCode = resp.status;
         if (this.registerCode === 200) {
@@ -81,8 +91,43 @@ export class RegisterComponent implements OnInit {
   }
 
   checkButtonLogin() {
+<<<<<<< HEAD
     // tslint:disable-next-line: max-line-length
     (this.firstName && this.lastName && this.username && this.password && this.confirmPass && (this.password === this.confirmPass)) ? this.formStatus = true : this.formStatus = false;
+=======
+    if (this.firstName && this.lastName && this.username && this.password && this.confirmPass
+      && (this.usernameTaken === false)
+      && (this.usernameTooShort === false)
+      && (this.password === this.confirmPass)) {
+      this.formStatus = true;
+    } else {
+      this.formStatus = false;
+    }
+>>>>>>> 1eaa0350ec7742ef48e56f325c54d1efd825da3f
+  }
+
+  verifyUsername(){
+
+    if (this.username.length < 5){
+      this.usernameTooShort = true;
+    } else if (this.username.length >= 5 || this.username.length === 0){
+      this.usernameTooShort = false;
+    }
+
+    if (this.username){
+      this.userService.checkIfUsernameExist(this.username).subscribe(
+        resp => {
+          this.usernameCode = resp.status;
+          console.log(this.usernameCode);
+          if (this.usernameCode === 202){ // Username is valid
+            this.usernameTaken = false;
+          }else if (this.usernameCode === 208){ // Username already exists
+            this.usernameTaken = true;
+          }
+          this.checkButtonLogin();
+        }
+      );
+    }
   }
 
 }

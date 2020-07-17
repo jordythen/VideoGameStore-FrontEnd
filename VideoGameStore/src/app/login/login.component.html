@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container"  *ngIf="!(displayLoginLoader | async)">
   <h2 class="login-title">Login</h2>
   <form onsubmit="return false;">
     <div class="form-group">
@@ -17,4 +17,10 @@
     <div class="d-flex justify-content-center">
       <a href="#">Forgot your password?</a>
   </div>
+</div>
+
+<div class="loginLoader" *ngIf="displayLoginLoader | async">
+  <div class="loadingio-spinner-blocks-qn75jsvav1"><div class="ldio-eqmkdf70m6i">
+    <div style='left:52.75px;top:52.75px;animation-delay:0s'></div><div style='left:88.61999999999999px;top:52.75px;animation-delay:0.125s'></div><div style='left:124.49px;top:52.75px;animation-delay:0.25s'></div><div style='left:52.75px;top:88.61999999999999px;animation-delay:0.875s'></div><div style='left:124.49px;top:88.61999999999999px;animation-delay:0.375s'></div><div style='left:52.75px;top:124.49px;animation-delay:0.75s'></div><div style='left:88.61999999999999px;top:124.49px;animation-delay:0.625s'></div><div style='left:124.49px;top:124.49px;animation-delay:0.5s'></div>
+    </div></div>
 </div>
