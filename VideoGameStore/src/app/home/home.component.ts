@@ -5,32 +5,42 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private ref: ApplicationRef, private mainNav: MainNavComponent, private userService: UserService) { }
+  constructor(
+    private ref: ApplicationRef,
+    private mainNav: MainNavComponent,
+    private userService: UserService
+  ) {}
 
   loggedUser: User;
   registerFlag = false;
   queryFlag = false;
-  gridTemplate = '4fr 1.5fr';
-  bgImgStyle = '27%';
+  gridTemplate = '1fr';
+  bgImgStyle = '-1%';
+  isInitial: boolean;
 
   ngOnInit(): void {
-    this.userService.checkLoggedUser().subscribe(
-      resp => {
-        this.loggedUser = resp.body;
-        if (this.loggedUser) {
-          this.changeHomeGrid();
-        }
+    this.isInitial = false;
+    this.userService.checkLoggedUser().subscribe((resp) => {
+      this.loggedUser = resp.body;
+      if (this.loggedUser) {
+        this.isInitial = false;
+      } else {
+        this.changeHomeGrid();
+        this.isInitial = true;
       }
-    );
+    });
   }
 
-  changeHomeGrid(){
+  changeHomeGrid() {
+    this.gridTemplate = '4fr 1.5fr';
+    this.bgImgStyle = '27%';
+  }
+
+  loggedInGrid() {
     this.gridTemplate = '1fr';
     this.bgImgStyle = '-1%';
   }
-
 }

@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
 import { AccountqueryComponent } from './accountquery/accountquery.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AccountqueryComponent } from './accountquery/accountquery.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AccountqueryComponent
+    AccountqueryComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
