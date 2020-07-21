@@ -23,10 +23,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isInitial = false;
-    if (!this.loggedUser){
-      this.changeHomeGrid();
-    }
+    
     this.userService.checkLoggedUser().subscribe((resp) => {
+      console.log(resp.body);
       this.loggedUser = resp.body;
       if (this.loggedUser) {
         this.isInitial = false;
