@@ -29,11 +29,17 @@ export class HomeComponent implements OnInit {
       this.loggedUser = resp.body;
       if (this.loggedUser) {
         this.isInitial = false;
+        this.loggedInGrid();
       } else {
         this.changeHomeGrid();
         this.isInitial = true;
       }
     });
+    /* 
+    if (!this.loggedUser){
+      this.changeHomeGrid();
+    }*/
+
   }
 
   changeHomeGrid() {

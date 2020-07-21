@@ -6,6 +6,7 @@
 
 .mat-toolbar-row, .mat-toolbar-single-row {
   height: 43px !important;
+  z-index: 1000;
 }
 
 .mat-toolbar.mat-primary {

@@ -1,7 +1,22 @@
-.inventoryTemplate {
-    display: grid;
+.bg {
+    left: 0;
+    top: 0;
+    display: inline;
+    position: absolute;
+    width: 100%;
     height: 100vh;
+    z-index: -1;
     background: rgb(93, 238, 255);
     /* background: linear-gradient(28deg, rgba(171, 252, 193, 1) 0%, rgba(90, 235, 252, 1) 100%); */
     background: linear-gradient(28deg, rgba(90, 235, 252, 1) 0%, rgba(171, 252, 193, 1) 100%);
+}
+
+.inventoryTemplate{
+    display: grid;
+}
+.categoryDropdown{
+    display: inline-grid;
+    justify-self: end;
+    margin-top: 26px;
+    margin-right: 70px;
 }
