@@ -23,6 +23,7 @@ import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
 import { AccountqueryComponent } from './accountquery/accountquery.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { InventoryComponent } from './inventory/inventory.component';
     MatMenuModule,
     NgbModule,
     FormsModule,
+    SlickCarouselModule
   ],
   providers: [UserService, UrlService],
   bootstrap: [AppComponent]
