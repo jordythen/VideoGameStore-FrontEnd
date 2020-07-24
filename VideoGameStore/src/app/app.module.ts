@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
 import { AccountqueryComponent } from './accountquery/accountquery.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { InventoryComponent } from './inventory/inventory.component';
     LoginComponent,
     RegisterComponent,
     AccountqueryComponent,
-    InventoryComponent
+    InventoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +50,10 @@ import { InventoryComponent } from './inventory/inventory.component';
     MatMenuModule,
     NgbModule,
     FormsModule,
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [UserService, UrlService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

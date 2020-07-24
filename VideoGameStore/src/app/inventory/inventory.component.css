@@ -20,3 +20,7 @@
     margin-top: 26px;
     margin-right: 70px;
 }
+
+.carousel-indicators {
+    bottom: -50px !important;
+}
