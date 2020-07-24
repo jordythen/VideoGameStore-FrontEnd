@@ -112,11 +112,11 @@ export class InventoryComponent implements OnInit {
   
   ngOnInit() {
     this.gameList = [];
-    this.pushIntoList();
+    this.pushIntoList(this.cards);
   }
 
-  pushIntoList() {
-    for (const g of this.cards) {
+  pushIntoList(list) {
+    for (const g of list) {
       let newGame: Game = new Game();
       newGame = g;
       this.gameList.push(newGame);
