@@ -1,51 +1,125 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../classes/game';
 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
-  styleUrls: ['./inventory.component.css']
+  styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  slides = [
-    { img: 'http://placehold.it/350x150/000000' },
-    { img: 'http://placehold.it/350x150/111111' },
-    { img: 'http://placehold.it/350x150/333333' },
-    { img: 'http://placehold.it/350x150/666666' },
-    { img: 'http://placehold.it/350x150/666666' },
-    { img: 'http://placehold.it/350x150/666666' }
-
+  game: Game;
+  gameList: Game[];
+  cards = [
+    {
+      title: 'Card Title 1',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+    },
+    {
+      title: 'Card Title 2',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (36).jpg',
+    },
+    {
+      title: 'Card Title 3',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (34).jpg',
+    },
+    {
+      title: 'Card Title 4',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (38).jpg',
+    },
+    {
+      title: 'Card Title 5',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (29).jpg',
+    },
+    {
+      title: 'Card Title 6',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (30).jpg',
+    },
+    {
+      title: 'Card Title 7',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (27).jpg',
+    },
+    {
+      title: 'Card Title 8',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Others/img (33).jpg',
+    },
+    {
+      title: 'Card Title 9',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+    },
+    {
+      title: 'Card Title 10',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+    },
+    {
+      title: 'Card Title 11',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+    },
+    {
+      title: 'Card Title 12',
+      description:
+        'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img:
+        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+    },
   ];
-  slideConfig = { 'slidesToShow' : 6, 'slidesToScroll': 6 };
-
-  ngOnInit(): void {
+  
+  ngOnInit() {
+    this.gameList = [];
+    this.pushIntoList(this.cards);
   }
 
-  addSlide() {
-    this.slides.push({ img: 'http://placehold.it/350x150/777777' });
-
+  pushIntoList(list) {
+    for (const g of list) {
+      let newGame: Game = new Game();
+      newGame = g;
+      this.gameList.push(newGame);
+    }
   }
-
-  removeSlide() {
-    this.slides.length = this.slides.length - 1;
-  }
-
-  slickInit(e) {
-    console.log('slick initialized');
-  }
-
-  breakpoint(e) {
-    console.log('breakpoint');
-  }
-
-  afterChange(e) {
-    console.log('afterChange');
-  }
-
-  beforeChange(e) {
-    console.log('beforeChange');
-  }
-
 }

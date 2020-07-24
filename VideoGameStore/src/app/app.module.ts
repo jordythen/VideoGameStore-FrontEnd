@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +23,9 @@ import { UserService } from './services/user.service';
 import { UrlService } from './services/url.service';
 import { AccountqueryComponent } from './accountquery/accountquery.component';
 import { InventoryComponent } from './inventory/inventory.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BootstrapCarouselComponent } from './bootstrap-carousel/bootstrap-carousel.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     LoginComponent,
     RegisterComponent,
     AccountqueryComponent,
-    InventoryComponent
+    InventoryComponent,
+    BootstrapCarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +53,10 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatMenuModule,
     NgbModule,
     FormsModule,
-    SlickCarouselModule
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [UserService, UrlService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
