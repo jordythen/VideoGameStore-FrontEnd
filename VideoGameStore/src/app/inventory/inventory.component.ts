@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../classes/game';
 
 @Component({
   selector: 'app-inventory',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InventoryComponent implements OnInit {
   constructor() {}
+
+  game: Game;
+  gameList: Game[];
   cards = [
     {
       title: 'Card Title 1',
@@ -105,15 +109,17 @@ export class InventoryComponent implements OnInit {
         'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
     },
   ];
-  slides: any = [[]];
-  chunk(arr, chunkSize) {
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
+  
   ngOnInit() {
-    this.slides = this.chunk(this.cards, 3);
+    this.gameList = [];
+    this.pushIntoList();
+  }
+
+  pushIntoList() {
+    for (const g of this.cards) {
+      let newGame: Game = new Game();
+      newGame = g;
+      this.gameList.push(newGame);
+    }
   }
 }

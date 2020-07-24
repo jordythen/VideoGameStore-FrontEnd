@@ -24,6 +24,7 @@ import { UrlService } from './services/url.service';
 import { AccountqueryComponent } from './accountquery/accountquery.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BootstrapCarouselComponent } from './bootstrap-carousel/bootstrap-carousel.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     RegisterComponent,
     AccountqueryComponent,
     InventoryComponent,
+    BootstrapCarouselComponent,
   ],
   imports: [
     BrowserModule,
