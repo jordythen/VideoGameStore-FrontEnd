@@ -22,7 +22,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (36).jpg',
     },
     {
       title: 'Card Title 3',
@@ -30,7 +30,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (34).jpg',
     },
     {
       title: 'Card Title 4',
@@ -38,7 +38,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (38).jpg',
     },
     {
       title: 'Card Title 5',
@@ -46,7 +46,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (29).jpg',
     },
     {
       title: 'Card Title 6',
@@ -54,7 +54,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (30).jpg',
     },
     {
       title: 'Card Title 7',
@@ -62,7 +62,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (27).jpg',
     },
     {
       title: 'Card Title 8',
@@ -70,7 +70,7 @@ export class InventoryComponent implements OnInit {
         'Some quick example text to build on the card title and make up the bulk of the card content',
       buttonText: 'Button',
       img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+        'https://mdbootstrap.com/img/Photos/Others/img (33).jpg',
     },
     {
       title: 'Card Title 9',

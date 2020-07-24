@@ -22,5 +22,5 @@
 }
 
 .carousel-indicators {
-    bottom: -50px !important;
+    position: relative;
 }
