@@ -1,13 +1,16 @@
 <div class="bg"></div>
-
-<div class="inventoryTemplate">
+<div class="regLoader" *ngIf="displayRegisterLoader | async">
+    <div class="loadingio-spinner-blocks-qn75jsvav1"><div class="ldio-eqmkdf70m6i">
+      <div style='left:52.75px;top:52.75px;animation-delay:0s'></div><div style='left:88.61999999999999px;top:52.75px;animation-delay:0.125s'></div><div style='left:124.49px;top:52.75px;animation-delay:0.25s'></div><div style='left:52.75px;top:88.61999999999999px;animation-delay:0.875s'></div><div style='left:124.49px;top:88.61999999999999px;animation-delay:0.375s'></div><div style='left:52.75px;top:124.49px;animation-delay:0.75s'></div><div style='left:88.61999999999999px;top:124.49px;animation-delay:0.625s'></div><div style='left:124.49px;top:124.49px;animation-delay:0.5s'></div>
+      </div></div>
+  </div>
+<div class="inventoryTemplate" *ngIf="!(displayRegisterLoader | async)">
     <div class="categoryDropdown">
         <select name="gameCategory" id="gameCategory">
             <option value="shooter">First Person Shooter</option>
         </select>
     </div>
 
-  <app-bootstrap-carousel [games]="gameList"></app-bootstrap-carousel>
-  <app-bootstrap-carousel></app-bootstrap-carousel>
+  <app-bootstrap-carousel  [games]="retrievedGames"></app-bootstrap-carousel>
 
 </div>

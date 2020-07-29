@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../classes/game';
+import { InventoryService } from '../services/inventory.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-inventory',
@@ -7,10 +9,12 @@ import { Game } from '../classes/game';
   styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent implements OnInit {
-  constructor() {}
+  constructor(private inventoryService: InventoryService) { }
 
   game: Game;
   gameList: Game[];
+  retrievedGames: Game[];
+  doneLoading: Boolean;
   cards = [
     {
       title: 'Card Title 1',
@@ -21,98 +25,47 @@ export class InventoryComponent implements OnInit {
         'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
     },
     {
-      title: 'Card Title 2',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (36).jpg',
-    },
-    {
-      title: 'Card Title 3',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (34).jpg',
-    },
-    {
-      title: 'Card Title 4',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (38).jpg',
-    },
-    {
-      title: 'Card Title 5',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (29).jpg',
-    },
-    {
-      title: 'Card Title 6',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (30).jpg',
-    },
-    {
-      title: 'Card Title 7',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (27).jpg',
-    },
-    {
-      title: 'Card Title 8',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Others/img (33).jpg',
-    },
-    {
-      title: 'Card Title 9',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
-    },
-    {
-      title: 'Card Title 10',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
-    },
-    {
-      title: 'Card Title 11',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
-    },
-    {
-      title: 'Card Title 12',
-      description:
-        'Some quick example text to build on the card title and make up the bulk of the card content',
-      buttonText: 'Button',
-      img:
-        'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
-    },
+
+    }
   ];
-  
+  public displayRegisterLoader: Observable<boolean> = this.inventoryService.isLoading();
+
+
   ngOnInit() {
     this.gameList = [];
-    this.pushIntoList(this.cards);
+    this.retrievedGames = [];
+    this.doneLoading = false;
+    this.inventoryService.retrieveAllGames().subscribe(
+      (resp) => {
+        this.inventoryService.loader.next(false);
+        console.log(resp.body);
+        this.doneLoading = true;
+
+        for (const g of resp.body){
+          let tempG = new Game();
+          tempG.title = g.name;
+          if (g.developers === null){
+            tempG.credit = `Developed by unknown`;
+          } else {
+            tempG.credit = `Developed by ${g.developers[0].name}`;
+          }
+          tempG.releaseDate = `Released on ${this.cleanDate(g.dateReleased)}`;
+          this.retrievedGames.push(tempG);
+        }
+
+        //this.pushIntoList(this.cards);
+      }
+    );
+    //this.pushIntoList(this.cards);
+  }
+
+  cleanDate(date: string): string{
+    const splitDate = date.split('-');
+    const year = splitDate[0];
+    const month = splitDate[1];
+    const day = splitDate[2].slice(0, 2);
+    console.log(year + " " + month + " " + day);
+    return month + '-' + day + '-' + year;
   }
 
   pushIntoList(list) {

@@ -1,5 +1,5 @@
 <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-              [animation]="'slide'">
+              [interval]="0" [animation]="'slide'">
   <mdb-carousel-item *ngFor="let item of slides; let i = index">
     <div class="col-md-4 pb-2" *ngFor="let card of item; let cardIndex = index">
       <mdb-card class="my-1 h-100">
@@ -9,6 +9,8 @@
             <h4>{{card.title}}</h4>
           </mdb-card-title>
           <p>{{card.description}}</p>
+          <p>{{card.credit}}</p>
+          <p>{{card.releaseDate}}</p>
         </mdb-card-body>
         <mdb-card-footer>
           <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>

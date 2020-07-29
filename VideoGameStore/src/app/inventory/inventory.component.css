@@ -24,3 +24,9 @@
 .carousel-indicators {
     position: relative;
 }
+
+.regLoader{
+    position: relative;
+    text-align: center;
+    top: 25vh;
+}
