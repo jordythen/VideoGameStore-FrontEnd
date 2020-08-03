@@ -5,4 +5,5 @@ export class Game {
   releaseDate: string;
   buttonText: string;
   img: string;
+  id: number;
 }

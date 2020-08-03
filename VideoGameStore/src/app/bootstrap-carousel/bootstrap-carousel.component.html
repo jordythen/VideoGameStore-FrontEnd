@@ -6,14 +6,17 @@
         <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title>
-            <h4>{{card.title}}</h4>
+            <h4 class="displayTitle">{{card.title}}</h4>
           </mdb-card-title>
           <p>{{card.description}}</p>
           <p>{{card.credit}}</p>
           <p>{{card.releaseDate}}</p>
         </mdb-card-body>
         <mdb-card-footer>
-          <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+          <!--href="game/{{card.id}}"-->
+          <a [routerLink]="['/game',card.id]" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+          <a [routerLink]="['/game',card.id]" mdbBtn color="green" class="waves-light" mdbWavesEffect>Add To Cart</a>
+
         </mdb-card-footer>
       </mdb-card>
     </div>

@@ -1,5 +1,5 @@
 <div class="bg"></div>
-<div class="regLoader" *ngIf="displayRegisterLoader | async">
+<div class="regLoader" *ngIf="displayLoader | async">
   <div class="loadingio-spinner-blocks-qn75jsvav1">
     <div class="ldio-eqmkdf70m6i">
       <div style='left:52.75px;top:52.75px;animation-delay:0s'></div>
@@ -12,14 +12,4 @@
       <div style='left:124.49px;top:124.49px;animation-delay:0.5s'></div>
     </div>
   </div>
-</div>
-<div class="inventoryTemplate" *ngIf="!(displayRegisterLoader | async)">
-  <!--<div class="categoryDropdown">
-    <select name="gameCategory" id="gameCategory">
-      <option value="shooter">First Person Shooter</option>
-    </select>
-  </div>-->
-
-  <app-bootstrap-carousel style="margin-top: 25px;" [games]="retrievedGames"></app-bootstrap-carousel>
-  
 </div>

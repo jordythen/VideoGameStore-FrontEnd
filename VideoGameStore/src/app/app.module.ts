@@ -26,6 +26,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BootstrapCarouselComponent } from './bootstrap-carousel/bootstrap-carousel.component';
+import { ViewGameComponent } from './view-game/view-game.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BootstrapCarouselComponent } from './bootstrap-carousel/bootstrap-carou
     AccountqueryComponent,
     InventoryComponent,
     BootstrapCarouselComponent,
+    ViewGameComponent,
   ],
   imports: [
     BrowserModule,

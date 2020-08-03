@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class InventoryComponent implements OnInit {
   constructor(private inventoryService: InventoryService) { }
-
   game: Game;
   gameList: Game[];
   retrievedGames: Game[];
@@ -41,14 +40,22 @@ export class InventoryComponent implements OnInit {
         console.log(resp.body);
         this.doneLoading = true;
 
-        for (const g of resp.body){
+        for (const g of resp.body) {
           let tempG = new Game();
           tempG.title = g.name;
-          if (g.developers === null){
-            tempG.credit = `Developed by unknown`;
+          if (g.developers === null) {
+            tempG.credit = `Developed by Unknown`;
           } else {
             tempG.credit = `Developed by ${g.developers[0].name}`;
           }
+          tempG.buttonText = 'More Info';
+          tempG.description = g.description;
+          if (g.mainImg !== null) {
+            tempG.img = g.mainImg;
+          } else {
+            tempG.img = 'https://i.redd.it/syqa06y95ea11.jpg';
+          }
+          tempG.id = g.id;
           tempG.releaseDate = `Released on ${this.cleanDate(g.dateReleased)}`;
           this.retrievedGames.push(tempG);
         }
@@ -59,12 +66,12 @@ export class InventoryComponent implements OnInit {
     //this.pushIntoList(this.cards);
   }
 
-  cleanDate(date: string): string{
+  cleanDate(date: string): string {
     const splitDate = date.split('-');
     const year = splitDate[0];
     const month = splitDate[1];
     const day = splitDate[2].slice(0, 2);
-    console.log(year + " " + month + " " + day);
+    // console.log(year + " " + month + " " + day);
     return month + '-' + day + '-' + year;
   }
 

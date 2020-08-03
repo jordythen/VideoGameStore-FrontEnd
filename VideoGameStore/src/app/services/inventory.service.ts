@@ -21,6 +21,13 @@ export class InventoryService {
     );
   }
 
+  retrieveGame(id: number): Observable<HttpResponse<any>>{
+    this.loader.next(true);
+    return this.http.get(this.urlService.getUrl() + 'inventory/game/' + id, {observe: 'response', withCredentials: true}).pipe(
+      map(resp => resp as HttpResponse<any>)
+    );
+  }
+
   public isLoading(): Observable<boolean> {
     return this.loader;
   }

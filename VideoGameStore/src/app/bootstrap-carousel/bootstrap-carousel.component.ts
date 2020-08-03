@@ -9,12 +9,11 @@ import { Game } from '../classes/game';
 export class BootstrapCarouselComponent implements OnInit {
 
   constructor() { }
-
   @Input() games: Game;
 
   slides: any = [[]];
   chunk(arr, chunkSize) {
-    let R = [];
+    const R = [];
     for (let i = 0, len = arr.length; i < len; i += chunkSize) {
       R.push(arr.slice(i, i + chunkSize));
     }
@@ -23,5 +22,4 @@ export class BootstrapCarouselComponent implements OnInit {
   ngOnInit() {
     this.slides = this.chunk(this.games, 3);
   }
-
 }
